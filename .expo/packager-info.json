@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": "https://gj-pau.anonymous.coronareactapp.exp.direct",
-  "packagerNgrokUrl": "https://packager.gj-pau.anonymous.coronareactapp.exp.direct",
-  "ngrokPid": 22920,
-  "webpackServerPort": 19006
+  "packagerPort": 19001,
+  "packagerPid": 1496,
+  "expoServerNgrokUrl": "https://xd-2if.kseg97.pneuma.exp.direct",
+  "packagerNgrokUrl": "https://packager.xd-2if.kseg97.pneuma.exp.direct",
+  "ngrokPid": 4120,
+  "webpackServerPort": null
 }
