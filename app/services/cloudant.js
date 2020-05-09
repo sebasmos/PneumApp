@@ -3,8 +3,8 @@ import { Base64 } from '../utils'
 async function getData() {
     const db = "ventilator_db";
     const query = "_find";
-    const username = "c612a48e-6c75-40f8-b275-f9958a5e1317-bluemix";
-    const password = "346a8f8b4a86fab70993f3ba0a434d1b6d7ead444a387e6bcb651a4750b420f9";
+    const username = "637f34a0-1b45-46ef-a656-1e7af678a2d8-bluemix";
+    const password = "b121eae3baa885d70cd6706f0ae6660825b6d705124e4689f2baa29409d712f1";
     const url = `https://${username}:${password}@${username}.cloudantnosqldb.appdomain.cloud`;
 
     var myHeaders = new Headers({
