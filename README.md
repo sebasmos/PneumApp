@@ -44,6 +44,11 @@ Requirements:
 			},
 			...
 		}
+	
+	
+## Full Application
+Refer to this repository.
+'git clone https://github.com/sebasmos/PneumApp.git'
 
 ## Set-up 🤬
 
@@ -56,7 +61,7 @@ To download just press on the download button and unzip in your working env.
 Run `npm install` and then `npm start` in the *node_server_gen_using_ibm* folder to execute the number generator.
 Run `npm install` and then `npm start` in the *expo_react_client* folder to execute the Expo server and therefore your app in the Android client
 Change *.env* with the team credentials.
+## Artificial ventilator - Bluetooth interface 
+Check our manual for further instructions regarding how to configure your artificial ventilator in our App.
 
-## Server configuration
-
-TODO
+If you have any doubts or suggestions, please contact us in sebasmos@ieee.org
