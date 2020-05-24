@@ -1,37 +1,53 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     StyleSheet,
     Text,
     View,
     ImageBackground,
     Image,
+    Button,
     TextInput,
     Dimensions,
     TouchableOpacity
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 import Navigation from '../navigation/Navigation'; 
-import bgImage from '../../assets/bg4.jpg';
+import bgImage from '../../assets/bg4.jpg'; 
 import Logo from '../../assets/LOGOFINAL.png';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class SignupScreen extends Component {
+const SignupScreen =()=>{
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+  const onChange = (event, selectedDate) => {
+  const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
 
-    constructor(props) {
-        super(props);
-        //const someExtractedParam = this.propss.navigation.getParam('someParam', 'defaulValue')
-    }
+  const showMode = currentMode => {
+    setShow(true);
+    setMode(currentMode);
+  };
 
-    _onPressSignup = () => {
-        Navigation.navigate('GettingStarted', { someParam: 1 })
-    }
-    _onPressPass = ()=> {
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
+
+    const _onPressPass = ()=> {
         Navigation.goBack()
-    }
+    };
+    const _onPressSignup = () => {
+        Navigation.navigate('GettingStarted', { someParam: 1 })
+    };
 
-    render() {
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
                 <View style={styles.logoContainer}>
@@ -81,17 +97,33 @@ export default class SignupScreen extends Component {
                         underlineColorAndroid='transparent'
                     />
                 </View>
-                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressSignup}>
+                    <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+                         <Text style={styles.Datetext} > Fecha de nacimiento </Text>
+                    </TouchableOpacity>
+                
+                {show && (
+                    <DateTimePicker
+                    testID="dateTimePicker"
+                    timeZoneOffsetInMinutes={0}
+                    value={date}
+                    mode={mode}
+                    is24Hour={true}
+                    display="default"
+                    onChange={onChange}
+                    />
+                )}
+
+
+                <TouchableOpacity style={styles.btnLogin} onPress={_onPressSignup}>
                     <Text style={styles.text} > Registrarme </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnAtras} onPress={this._onPressPass}>
+                <TouchableOpacity style={styles.btnAtras} onPress={_onPressPass}>
                     <Text style={styles.text} > Atrás </Text>
                 </TouchableOpacity>
             </ImageBackground>
         );
     }
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -159,7 +191,16 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(0,0,0,0.35)',
         color: 'rgba(255,255,255,0.7)',
         marginHorizontal: 25,
-
+    },
+    button:{
+            width: WIDTH - 55,
+            height: 45,
+            borderRadius: 45,
+            fontSize: 16,
+            paddingLeft: 45,
+            backgroundColor: 'rgba(0,0,0,0.35)',
+            color: 'rgba(255,255,255,0.7)',
+            marginHorizontal: 25,
     },
     inputIcon: {
         position: 'absolute',
@@ -183,6 +224,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#001696',
         marginTop: 50
     },
+    Datetext:{
+        textAlign: 'left',
+        fontSize:16,
+        color: 'rgba(255,255,255,0.7)',
+    },
     text: {
         color: 'rgba(255,255,255,1)',
         fontSize: 16,
@@ -202,3 +248,5 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline'
     }
 })
+
+export default SignupScreen;
