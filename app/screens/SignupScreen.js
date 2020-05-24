@@ -98,6 +98,9 @@ const SignupScreen =()=>{
                     />
                 </View>
                     <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+                        <Icon name={'ios-arrow-dropdown'} size={28} color={'rgba(255,255,255,0.7)'}
+                            style={styles.inputIcon}
+                        />
                          <Text style={styles.Datetext} > Fecha de nacimiento </Text>
                     </TouchableOpacity>
                 
@@ -205,7 +208,7 @@ const styles = StyleSheet.create({
     inputIcon: {
         position: 'absolute',
         top: 8,
-        left: 37
+        left: 300
     },
     inputContainer: {
         marginTop: 8,
