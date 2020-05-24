@@ -8,8 +8,10 @@ import {
     Button,
     TextInput,
     Dimensions,
-    TouchableOpacity
+    TouchableOpacity,
+    Picker
 } from 'react-native';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 import Navigation from '../navigation/Navigation'; 
 import bgImage from '../../assets/bg4.jpg'; 
@@ -17,8 +19,8 @@ import Logo from '../../assets/LOGOFINAL.png';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const { width: WIDTH } = Dimensions.get('window')
-
-const SignupScreen =()=>{
+    
+  const SignupScreen =()=>{
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -41,13 +43,19 @@ const SignupScreen =()=>{
     showMode('time');
   };
 
-    const _onPressPass = ()=> {
+  const _onPressPass = ()=> {
         Navigation.goBack()
     };
-    const _onPressSignup = () => {
+  const _onPressSignup = () => {
         Navigation.navigate('GettingStarted', { someParam: 1 })
     };
-
+  // Set picker state     
+  const state = {
+    opc1: 'E',
+    opc2: 'H',
+    opc3: 'M',
+    opc4: 'ND',
+    }
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
                 <View style={styles.logoContainer}>
@@ -89,13 +97,18 @@ const SignupScreen =()=>{
                         underlineColorAndroid='transparent'
                     />
                 </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Genero'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                    />
+                <View style={styles.button}>
+                        <Picker                    
+                            style={styles.picker} itemStyle={styles.inputContainer}
+                            selectedValue={state.opc1}
+                            onValueChange={(itemValue) => setState({opc1: itemValue})}
+                        >
+                                <Picker.Item label="Genero" value="E" />
+                                <Picker.Item label="Hombre" value="H" />
+                                <Picker.Item label="Mujer" value="M" />
+                                <Picker.Item label="Otro" value="ND" />
+                        </Picker>
+                                        
                 </View>
                     <TouchableOpacity style={styles.button} onPress={showDatepicker}>
                         <Icon name={'ios-arrow-dropdown'} size={28} color={'rgba(255,255,255,0.7)'}
@@ -195,17 +208,7 @@ const styles = StyleSheet.create({
         color: 'rgba(255,255,255,0.7)',
         marginHorizontal: 25,
     },
-    button:{
-            width: WIDTH - 55,
-            height: 45,
-            borderRadius: 45,
-            fontSize: 16,
-            paddingLeft: 45,
-            backgroundColor: 'rgba(0,0,0,0.35)',
-            color: 'rgba(255,255,255,0.7)',
-            marginHorizontal: 25,
-            marginTop:8
-    },
+   
     inputIcon: {
         position: 'absolute',
         top: 8,
@@ -251,7 +254,30 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         textDecorationLine: 'underline'
-    }
+    },
+    button:{
+        width: WIDTH - 55,
+        height: 45,
+        borderRadius: 45,
+        fontSize: 16,
+        paddingLeft: 45,
+        backgroundColor: 'rgba(0,0,0,0.35)',
+        color: 'rgba(255,255,255,0.7)',
+        marginHorizontal: 25,
+        marginTop:8
+},
+    picker: {
+        width: WIDTH - 55,
+        height: 25,
+        borderRadius: 45,
+        fontSize: 16,
+        paddingLeft: 5,
+        color: 'rgba(255,255,255,0.9)',
+        backgroundColor: 'rgba(0,0,0,0.0)',
+        marginHorizontal: 25,
+        marginTop:8,   
+        marginLeft:-5,      
+      },
 })
 
 export default SignupScreen;
