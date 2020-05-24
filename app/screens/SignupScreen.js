@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-import Navigation from '../navigation/Navigation'; 
+import Navigation from '../navigation/Navigation';
 import bgImage from '../../assets/bg4.jpg';
 import Logo from '../../assets/LOGOFINAL.png';
+
+import { signUpWithEmail } from '../services/firebase';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -23,10 +25,35 @@ export default class SignupScreen extends Component {
         super(props);
 
         //const someExtractedParam = this.props.navigation.getParam('someParam', 'defaulValue')
+
+        this.state = {
+            email: '',
+            password: '',
+            name: '',
+            //TODO: otros datos y subir a cloudant
+        }
     }
 
     _onPressSignup = () => {
         Navigation.navigate('GettingStarted', { someParam: 1 })
+
+        const { email, password, name } = this.state
+        signUpWithEmail(email, password)
+            .then(user => {
+                alert(user)
+                signInWithEmail(email, password)
+                    .then(user => alert(user))
+                    .catch(error => console.log(error))
+            })
+            .catch(error => console.log(error))
+    }
+
+    _onChangeEmail = (value) => {
+        this.setState({ email: value })
+    }
+
+    _onChangePassword = (value) => {
+        this.setState({ password: value })
     }
 
     render() {
@@ -69,6 +96,7 @@ export default class SignupScreen extends Component {
                         placeholder={'Correo Electronico'}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
+                        onChangeText={this._onChangeEmail}
                     />
                 </View>
                 <View style={styles.inputContainer}>
@@ -77,6 +105,16 @@ export default class SignupScreen extends Component {
                         placeholder={'Genero'}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Contraseña'}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        underlineColorAndroid='transparent'
+                        onChangeText={this._onChangePassword}
+                        secureTextEntry
                     />
                 </View>
                 <TouchableOpacity style={styles.btnLogin} onPress={this._onPressSignup}>

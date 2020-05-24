@@ -13,7 +13,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import bgImage from '../../assets/bg4.jpg';
 import Logo from '../../assets/LOGOFINAL.png';
-import Navigation from '../navigation/Navigation'; 
+import Navigation from '../navigation/Navigation';
+
+import { signInWithEmail } from '../services/firebase';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -22,10 +24,27 @@ export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            email: '',
+            password: '',
+        }
     }
 
     _onPressLogin = () => {
         Navigation.navigate('Signup', { someParam: 1 })
+
+        const { email, password } = this.state;
+        signInWithEmail(email, password)
+            .then(user => alert(user))
+            .catch(error => console.log(error))
+    }
+
+    _onChangeEmail = (value) => {
+        this.setState({ email: value })
+    }
+
+    _onChangePassword = (value) => {
+        this.setState({ password: value })
     }
 
     render() {
@@ -45,9 +64,10 @@ export default class LoginScreen extends Component {
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder={'Nombre de usuario'}
+                        placeholder={'Correo'}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
+                        onChangeText={this._onChangeEmail}
                     />
                 </View>
 
@@ -62,6 +82,7 @@ export default class LoginScreen extends Component {
                         secureTextEntry={true}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
+                        onChangeText={this._onChangePassword}
                     />
                     <TouchableOpacity style={styles.btnEye}>
                         <Icon name={'ios-cloud'} size={26} color={'rgba(255,255,255,0.7)'}
