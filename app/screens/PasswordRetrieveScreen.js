@@ -25,7 +25,6 @@ export default class PasswordRetrieveScreen extends Component {
         super(props);
 
     }
-
     _onPressLogin = () => {
         Navigation.navigate('Signup', { someParam: 1 })
     }
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0,0.35)',
         color: 'rgba(255,255,255,0.7)',
-        marginTop: 5
+        marginTop: 15
     },
     text: {
         color: 'rgba(255,255,255,0.7)',

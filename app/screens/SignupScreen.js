@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: 'rgba(0,0,0,0.35)',
         color: 'rgba(255,255,255,0.7)',
-        marginTop: 5
+        marginTop: 15
     },
     logoText: {
         color: '#001696',
@@ -204,6 +204,7 @@ const styles = StyleSheet.create({
             backgroundColor: 'rgba(0,0,0,0.35)',
             color: 'rgba(255,255,255,0.7)',
             marginHorizontal: 25,
+            marginTop:8
     },
     inputIcon: {
         position: 'absolute',
@@ -229,6 +230,7 @@ const styles = StyleSheet.create({
     },
     Datetext:{
         textAlign: 'left',
+        marginTop:8,
         fontSize:16,
         color: 'rgba(255,255,255,0.7)',
     },
