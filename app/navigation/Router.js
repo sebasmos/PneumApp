@@ -9,8 +9,11 @@ import {
     DashboardScreen,
     GettingStarted,
     SignupScreen,
-    PasswordRetrieveScreen
+    RealTimeScreen,
+    PasswordRetrieveScreen,
+    
 } from '../screens';
+import GettingStartedScreen from '../screens/GettingStartedScreen';
 
 const Router = createSwitchNavigator({
     Main: {
@@ -18,9 +21,12 @@ const Router = createSwitchNavigator({
             /* Dashboard */
             Dashboard: {
                 screen: DashboardScreen
-            },            
+            }, 
+            RealTime:{
+                screen: RealTimeScreen
+            },
             GettingStarted: {
-                screen: GettingStarted,
+                screen: GettingStartedScreen,
                 navigationOptions: {
                     headerMode: 'none',
                     header: (

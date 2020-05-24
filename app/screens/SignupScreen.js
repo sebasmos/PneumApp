@@ -28,6 +28,8 @@ const SignupScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const [gender, setGender] = useState(null);
+
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
@@ -50,6 +52,7 @@ const SignupScreen = () => {
     const _onChangeEmail = value => setEmail(value)
     const _onChangePassword = value => setPassword(value)
     const _onChangeName = value => setName(value)
+    const _onChangeGender = value => setGender(value)
 
     const _onPressBack = () => {
         Navigation.goBack()
@@ -64,9 +67,13 @@ const SignupScreen = () => {
         showMode('date');
     };
 
-    const showTimepicker = () => {
-        showMode('time');
-    };
+    // Set picker state     
+    // const state = {
+    //     opc1: 'E',
+    //     opc2: 'H',
+    //     opc3: 'M',
+    //     opc4: 'ND',
+    // }
 
     return (
         <ImageBackground source={bgImage} style={styles.backgroundContainer}>
@@ -81,7 +88,7 @@ const SignupScreen = () => {
                 <TextInput
                     style={styles.input}
                     placeholder={'Nombres'}
-                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    placeholderTextColor={'rgba(255,255,255,0.7)'}
                     underlineColorAndroid='transparent'
                     onChange={_onChangeName}
                 />
@@ -90,44 +97,6 @@ const SignupScreen = () => {
                 <TextInput
                     style={styles.input}
                     placeholder={'Apellidos'}
-                    placeholderTextColor={'rgba(0,0,0,0.7)'}
-                    underlineColorAndroid='transparent'
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder={'Correo Electronico'}
-                    placeholderTextColor={'rgba(0,0,0,0.7)'}
-                    underlineColorAndroid='transparent'
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder={'Genero'}
-                    placeholderTextColor={'rgba(0,0,0,0.7)'}
-                    underlineColorAndroid='transparent'
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <Picker
-                    style={styles.input}
-                    placeholderTextColor={'rgba(0,0,0,0.7)'}
-                    underlineColorAndroid='transparent'>
-                    <Picker.Item label="Soy un Paciente" value="Paciente" />
-                    <Picker.Item label="Soy un Medico" value="Medico" />
-                </Picker>
-            </View>
-            <TouchableOpacity style={styles.button} onPress={showDatepicker}>
-                <Icon name={'ios-arrow-dropdown'} size={28} color={'rgba(255,255,255,0.7)'}
-                    style={styles.inputIcon}
-                />
-            </TouchableOpacity>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
-                    placeholder={'Cedula'}
                     placeholderTextColor={'rgba(255,255,255,0.7)'}
                     underlineColorAndroid='transparent'
                 />
@@ -144,14 +113,6 @@ const SignupScreen = () => {
             <View style={styles.inputContainer}>
                 <TextInput
                     style={styles.input}
-                    placeholder={'Genero'}
-                    placeholderTextColor={'rgba(255,255,255,0.7)'}
-                    underlineColorAndroid='transparent'
-                />
-            </View>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    style={styles.input}
                     placeholder={'Contraseña'}
                     placeholderTextColor={'rgba(255,255,255,0.7)'}
                     underlineColorAndroid='transparent'
@@ -159,7 +120,37 @@ const SignupScreen = () => {
                     secureTextEntry
                 />
             </View>
-            <Text style={styles.Datetext} > Fecha de nacimiento </Text>
+
+            <TouchableOpacity>
+                <View style={styles.button}>
+                    <Picker
+                        style={styles.picker}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        underlineColorAndroid='transparent'>
+                        <Picker.Item label="Soy un Paciente" value="Paciente" />
+                        <Picker.Item label="Soy un Medico" value="Medico" />
+                    </Picker>
+                </View>
+            </TouchableOpacity>
+            <View style={styles.button}>
+                <Picker
+                    style={styles.picker} itemStyle={styles.inputContainer}
+                    selectedValue={gender}
+                    onValueChange={_onChangeGender}
+                >
+                    <Picker.Item label="Genero" value="E" />
+                    <Picker.Item label="Hombre" value="H" />
+                    <Picker.Item label="Mujer" value="M" />
+                    <Picker.Item label="Otro" value="ND" />
+                </Picker>
+            </View>
+            <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+                <Icon name={'ios-arrow-dropdown'} size={28} color={'rgba(255,255,255,0.7)'}
+                    style={styles.inputIcon}
+                />
+                <Text style={styles.Datetext} > Fecha de nacimiento </Text>
+            </TouchableOpacity>
+
             {show && (
                 <DateTimePicker
                     testID="dateTimePicker"
@@ -182,5 +173,6 @@ const SignupScreen = () => {
         </ImageBackground>
     );
 };
+
 
 export default SignupScreen;
