@@ -1,1 +1,10 @@
-{}
+{
+  "expoServerPort": 19000,
+  "expoServerNgrokUrl": "https://42-2p2.sebasmos.pneuma.exp.direct",
+  "packagerNgrokUrl": "https://packager.42-2p2.sebasmos.pneuma.exp.direct",
+  "ngrokPid": 5924,
+  "packagerPort": 19001,
+  "packagerPid": 4588,
+  "webpackServerPort": null,
+  "devToolsPort": 19002
+}

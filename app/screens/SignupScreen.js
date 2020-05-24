@@ -27,6 +27,9 @@ export default class SignupScreen extends Component {
     _onPressSignup = () => {
         Navigation.navigate('GettingStarted', { someParam: 1 })
     }
+    _onPressPass = ()=> {
+        Navigation.goBack()
+    }
 
     render() {
         return (
@@ -82,6 +85,9 @@ export default class SignupScreen extends Component {
                     <Text style={styles.text} > Registrarme </Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={styles.btnAtras} onPress={this._onPressPass}>
+                    <Text style={styles.text} > Atrás </Text>
+                </TouchableOpacity>
             </ImageBackground>
         );
     }
@@ -124,6 +130,15 @@ const styles = StyleSheet.create({
     Logo: {
         width: 265,
         height: 70,
+    },
+    btnAtras: {
+        width: WIDTH - 55,
+        height: 45,
+        borderRadius: 45,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.35)',
+        color: 'rgba(255,255,255,0.7)',
+        marginTop: 5
     },
     logoText: {
         color: '#001696',
