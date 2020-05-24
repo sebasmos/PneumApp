@@ -4,10 +4,8 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 
 export default function Main() {
-
   return (
     <Navigator>
     </Navigator>
   )
-
 }
