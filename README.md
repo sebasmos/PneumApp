@@ -47,9 +47,13 @@ Requirements:
 	
 	
 ## Full Application
+
 Refer to this repository.
-`git clone https://github.com/sebasmos/PneumApp.git`
-Update dependencies with `npm install` and `npm upgrade`
+
+`git clone https://github.com/sebasmos/PneumApp.git`.
+
+Update dependencies with `npm install` and `npm upgrade`.
+
 Mind that you must keep React navication with version 3.0.4. 
 
 ## Set-up 🤬
