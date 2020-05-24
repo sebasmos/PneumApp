@@ -13,53 +13,38 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import bgImage from '../../assets/bg4.jpg';
 import Logo from '../../assets/LOGOFINAL.png';
-import Navigation from '../navigation/Navigation';
-
-import { signInWithEmail } from '../services/firebase';
+import Navigation from '../navigation/Navigation'; 
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export default class LoginScreen extends Component {
-
+export default class PasswordRetrieveScreen extends Component {
+    static navigationOptions = {
+        title: 'PasswordRetrieveScreen'
+    };
     constructor(props) {
         super(props);
 
-        this.state = {
-            email: '',
-            password: '',
-        }
     }
 
     _onPressLogin = () => {
-        const { email, password } = this.state;
-        signInWithEmail(email, password)
-            .then(user => alert(user))
-            .catch(error => console.log(error))
-    }
-
-    _onChangeEmail = (value) => {
-        this.setState({ email: value })
-    }
-
-    _onChangePassword = (value) => {
-        this.setState({ password: value })
-    }
-    _onPressSignup = () => {
         Navigation.navigate('Signup', { someParam: 1 })
     }
+    _onPressDashboard = () => {
+        Navigation.navigate('Dashboard', { someParam: 1 })
+    }
     _onPressPass = () => {
-        Navigation.navigate('PasswordRetrieveScreen', { someParam: 1 })
+        Navigation.goBack()
     }
 
     render() {
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
                 <View style={styles.TextWelcome} >
-                    <Text style={styles.WelcomeText} >Bienvenido a </Text>
+                    <Text style={styles.WelcomeText} >¿Olviaste tu contrasena? </Text>
                 </View>
                 <View style={styles.logoContainer}>
                     <Image source={Logo} style={styles.Logo} ></Image>
-                    <Text style={styles.logoText}> Aplicacion de monitoreo para ventiladores mecanicos</Text>
+                    <Text style={styles.logoText}> Ingresa tu correo para recuperar tu contraseña: </Text>
                 </View>
 
                 <View style={styles.inputContainer}>
@@ -68,42 +53,16 @@ export default class LoginScreen extends Component {
                     />
                     <TextInput
                         style={styles.input}
-                        placeholder={'Correo'}
+                        placeholder={'Correo electronico'}
                         placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
-                        onChangeText={this._onChangeEmail}
                     />
                 </View>
-
-                <View style={styles.inputContainer}>
-                    <Icon name={'ios-arrow-dropright'} size={28} color={'rgba(255,255,255,0.7)'}
-                        style={styles.inputIcon}
-                    />
-
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Contraseña'}
-                        secureTextEntry={true}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                        onChangeText={this._onChangePassword}
-                    />
-                    <TouchableOpacity style={styles.btnEye}>
-                        <Icon name={'ios-cloud'} size={26} color={'rgba(255,255,255,0.7)'}
-                        />
-                    </TouchableOpacity>
-                </View>
-
-                <TouchableOpacity onPress= {this._onPressPass} >
-                    <Text style={styles.textforgot} > ¿Olvidaste tu clave?</Text>
+                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressDashboard} >
+                    <Text style={styles.text} > Recuperar </Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressLogin} >
-                    <Text style={styles.text} > Entrar </Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.ContainerHighlighted} onPress={this._onPressSignup}>
-                    <Text style={styles.textRegister}>Crea una nueva cuenta</Text>
+                <TouchableOpacity style={styles.btnAtras} onPress={this._onPressPass} >
+                    <Text style={styles.text} > Volver atras </Text>
                 </TouchableOpacity>
             </ImageBackground>
         );
@@ -188,6 +147,15 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#001696',
         marginTop: 50
+    }, 
+    btnAtras: {
+        width: WIDTH - 55,
+        height: 45,
+        borderRadius: 45,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.35)',
+        color: 'rgba(255,255,255,0.7)',
+        marginTop: 5
     },
     text: {
         color: 'rgba(255,255,255,0.7)',

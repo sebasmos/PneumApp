@@ -3,6 +3,8 @@ import { createAppContainer } from 'react-navigation';
 import Navigation from './Navigation';
 import Router from './Router';
 
+import { onAuthStateChanged } from '../services/firebase';
+
 const AppNavigator = createAppContainer(Router);
 
 class Navigator extends Component {
@@ -15,10 +17,16 @@ class Navigator extends Component {
 
   componentDidMount() {
     Navigation.setTopLevelNavigator(this.navigator);
+    this.onAuthStateChanged = onAuthStateChanged(user => {
+      if (user) {
+        Navigation.navigate('Dashboard', { user })
+      }
+    })
   }
 
   componentWillUnmount() {
-    //TODO: unsubscribe any data observer
+    this.onAuthStateChanged && this.onAuthStateChanged();
+    this.onAuthStateChanged = undefined;
   }
 
   render() {

@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 import "firebase/auth";
+import Navigation from '../navigation/Navigation';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -40,8 +41,21 @@ const signUpWithEmail = (email, password) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
 }
 
+const signOut = () => {
+    return new Promise((resolve, reject) => {
+        firebase.auth().signOut()
+            .then(() => {
+                Navigation.reset({ route: 'Login' });
+                Navigation.navigate('Login')
+                resolve()
+            })
+            .catch(error => reject(error))
+    })
+}
+
 export {
     onAuthStateChanged,
     signInWithEmail,
-    signUpWithEmail
+    signUpWithEmail,
+    signOut,
 }

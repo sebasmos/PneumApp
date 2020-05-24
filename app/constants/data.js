@@ -4,13 +4,13 @@ export const data = [
         title: 'Informacion del ventilador',
         text: 'Welcome to CoronApp \n Click next to continue',
         options: [{
-           type: 'Tipo de ventilador',
-            selectors: ['Invasivo', 'No invasivo']
-       }, {
-           type: 'Tipo de valvula',
-           selectors: ['None']
-        }],
-        inputs:[],
+        type: 'Tipo de ventilador',
+        selectors: ['Invasivo', 'No invasivo']
+        }, {
+        type: 'Tipo de valvula',
+        selectors: ['None']
+       }],
+       inputs:[],
         image: require('../../assets/LOGOFINAL.png'),
     },
     {

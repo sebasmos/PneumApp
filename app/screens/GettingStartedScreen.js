@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity, Image, TextInput, Picker, ImageBackground } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-
 import Navigation from '../navigation/Navigation';
 import { data } from '../constants/data'
 import { styles } from '../styles/styles'
@@ -20,6 +19,7 @@ export default class GettingStartedScreen extends Component {
     _onPressDone = () => {
         Navigation.navigate('Dashboard', { someParam: 1 })
     }
+    
 
     _renderItem = ({ item }) => {
         return (

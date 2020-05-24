@@ -55,15 +55,18 @@ export default class SignupScreen extends Component {
     _onChangePassword = (value) => {
         this.setState({ password: value })
     }
+    _onPressPass = ()=> {
+        Navigation.goBack()
+    }
 
     render() {
         return (
             <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-                <View style={styles.TextWelcome} >
-                    <Text style={styles.WelcomeText} >Registrate </Text>
-                </View>
                 <View style={styles.logoContainer}>
                     <Image source={Logo} style={styles.Logo} ></Image>
+                </View>
+                <View style={styles.TextWelcome} >
+                    <Text style={styles.WelcomeText} >Registrate </Text>
                 </View>
 
                 <View style={styles.inputContainer}>
@@ -118,9 +121,12 @@ export default class SignupScreen extends Component {
                     />
                 </View>
                 <TouchableOpacity style={styles.btnLogin} onPress={this._onPressSignup}>
-                    <Text style={styles.text} > Registrate </Text>
+                    <Text style={styles.text} > Registrarme </Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={styles.btnAtras} onPress={this._onPressPass}>
+                    <Text style={styles.text} > Atrás </Text>
+                </TouchableOpacity>
             </ImageBackground>
         );
     }
@@ -141,13 +147,14 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 50
+        marginBottom:16
     },
     TextWelcome: {
         alignContent: 'center',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 50
+        marginTop: 16,
+        marginBottom: 32
     },
     WelcomeText: {
         color: '#001696',
@@ -160,8 +167,17 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     Logo: {
-        width: 330,
-        height: 90,
+        width: 265,
+        height: 70,
+    },
+    btnAtras: {
+        width: WIDTH - 55,
+        height: 45,
+        borderRadius: 45,
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0,0,0,0.35)',
+        color: 'rgba(255,255,255,0.7)',
+        marginTop: 5
     },
     logoText: {
         color: '#001696',
@@ -190,7 +206,8 @@ const styles = StyleSheet.create({
         left: 37
     },
     inputContainer: {
-        marginTop: 10,
+        marginTop: 8,
+        marginBottom: 8
     },
     btnEye: {
         position: 'absolute',
@@ -206,7 +223,7 @@ const styles = StyleSheet.create({
         marginTop: 50
     },
     text: {
-        color: 'rgba(255,255,255,0.7)',
+        color: 'rgba(255,255,255,1)',
         fontSize: 16,
         textAlign: 'center'
     },

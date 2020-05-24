@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 
 import { getData } from '../services/cloudant'
+import { signOut } from '../services/firebase'
 
 export default class DashboardScreen extends Component {
     static navigationOptions = {
@@ -13,7 +14,9 @@ export default class DashboardScreen extends Component {
     constructor(props) {
         super(props);
 
-        //const someExtractedParam = this.props.navigation.getParam('someParam', 'defaulValue')
+        //Ejemplo
+        const user = this.props.navigation.getParam('user', null)
+        alert(JSON.stringify(user))
 
         this.state = {
             data: [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }],
@@ -29,6 +32,12 @@ export default class DashboardScreen extends Component {
 
     componentWillUnmount() {
         clearInterval(this.dataInterval);
+    }
+
+    _onPressLogout = () => {
+        signOut()
+            .then(() => alert('Has cerrado sesión'))
+            .catch(error => console.error(error))
     }
 
     render() {
@@ -67,6 +76,7 @@ export default class DashboardScreen extends Component {
                         svg={{ fontSize: 10, fill: 'black' }}
                     /> */}
                 </View>
+                <Button onPress={this._onPressLogout} title={'Cerrar sesión'} />
             </View>
         )
     }
