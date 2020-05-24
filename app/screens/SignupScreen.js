@@ -1,6 +1,5 @@
 import React, { Component, useState } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
     ImageBackground,
@@ -8,10 +7,17 @@ import {
     Button,
     TextInput,
     Dimensions,
+<<<<<<< HEAD
     TouchableOpacity,
     Picker
 } from 'react-native';
 
+=======
+    Picker,
+    TouchableOpacity
+} from 'react-native';
+import { styles } from '../styles/styles';
+>>>>>>> 4a63801101cc52c30bdfbbb6b2203ed494bbee4a
 import Icon from 'react-native-vector-icons/Ionicons';
 import Navigation from '../navigation/Navigation'; 
 import bgImage from '../../assets/bg4.jpg'; 
@@ -19,6 +25,7 @@ import Logo from '../../assets/LOGOFINAL.png';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 const { width: WIDTH } = Dimensions.get('window')
+<<<<<<< HEAD
     
   const SignupScreen =()=>{
   const [date, setDate] = useState(new Date(1598051730000));
@@ -26,22 +33,31 @@ const { width: WIDTH } = Dimensions.get('window')
   const [show, setShow] = useState(false);
   const onChange = (event, selectedDate) => {
   const currentDate = selectedDate || date;
+=======
+
+const SignupScreen =()=>{
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+>>>>>>> 4a63801101cc52c30bdfbbb6b2203ed494bbee4a
     setShow(Platform.OS === 'ios');
     setDate(currentDate);
-  };
+    };
 
-  const showMode = currentMode => {
+    const showMode = currentMode => {
     setShow(true);
     setMode(currentMode);
-  };
+    };
 
-  const showDatepicker = () => {
+    const showDatepicker = () => {
     showMode('date');
-  };
+    };
 
-  const showTimepicker = () => {
+    const showTimepicker = () => {
     showMode('time');
-  };
+    };
 
   const _onPressPass = ()=> {
         Navigation.goBack()
@@ -49,6 +65,7 @@ const { width: WIDTH } = Dimensions.get('window')
   const _onPressSignup = () => {
         Navigation.navigate('GettingStarted', { someParam: 1 })
     };
+<<<<<<< HEAD
   // Set picker state     
   const state = {
     opc1: 'E',
@@ -64,38 +81,64 @@ const { width: WIDTH } = Dimensions.get('window')
                 <View style={styles.TextWelcome} >
                     <Text style={styles.WelcomeText} >Registrate </Text>
                 </View>
+=======
 
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Nombres'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
+    return (
+        <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+            <View style={styles.logoContainer}>
+                <Image source={Logo} style={styles.Logo} ></Image>
+            </View>
+            <View style={styles.TextWelcome} >
+                <Text style={styles.WelcomeText} >Registrate </Text>
+            </View>
+>>>>>>> 4a63801101cc52c30bdfbbb6b2203ed494bbee4a
+
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={'Nombres'}
+                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    underlineColorAndroid='transparent'
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={'Apellidos'}
+                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    underlineColorAndroid='transparent'
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={'Correo Electronico'}
+                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    underlineColorAndroid='transparent'
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder={'Genero'}
+                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    underlineColorAndroid='transparent'
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <Picker
+                    style={styles.input}
+                    placeholderTextColor={'rgba(0,0,0,0.7)'}
+                    underlineColorAndroid='transparent'>
+                    <Picker.Item label="Soy un Paciente" value="Paciente" />
+                    <Picker.Item label="Soy un Medico" value="Medico" />
+                </Picker>
+            </View>
+                <TouchableOpacity style={styles.button} onPress={showDatepicker}>
+                    <Icon name={'ios-arrow-dropdown'} size={28} color={'rgba(255,255,255,0.7)'}
+                        style={styles.inputIcon}
                     />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Apellidos'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Cedula'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Correo Electronico'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                    />
+<<<<<<< HEAD
                 </View>
                 <View style={styles.button}>
                         <Picker                    
@@ -132,15 +175,25 @@ const { width: WIDTH } = Dimensions.get('window')
 
                 <TouchableOpacity style={styles.btnLogin} onPress={_onPressSignup}>
                     <Text style={styles.text} > Registrarme </Text>
+=======
+                        <Text style={styles.Datetext} > Fecha de nacimiento </Text>
+>>>>>>> 4a63801101cc52c30bdfbbb6b2203ed494bbee4a
                 </TouchableOpacity>
+            
+            {show && (
+                <DateTimePicker
+                testID="dateTimePicker"
+                timeZoneOffsetInMinutes={0}
+                value={date}
+                mode={mode}
+                is24Hour={true}
+                display="default"
+                onChange={onChange}
+                />
+            )}
 
-                <TouchableOpacity style={styles.btnAtras} onPress={_onPressPass}>
-                    <Text style={styles.text} > Atrás </Text>
-                </TouchableOpacity>
-            </ImageBackground>
-        );
-    }
 
+<<<<<<< HEAD
 const styles = StyleSheet.create({
     container: {
         flex: 1
@@ -279,5 +332,17 @@ const styles = StyleSheet.create({
         marginLeft:-5,      
       },
 })
+=======
+            <TouchableOpacity style={styles.btnLogin} onPress={_onPressSignup}>
+                <Text style={styles.text} > Registrarme </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.btnAtras} onPress={_onPressPass}>
+                <Text style={styles.text} > Atrás </Text>
+            </TouchableOpacity>
+        </ImageBackground>
+    );
+};
+>>>>>>> 4a63801101cc52c30bdfbbb6b2203ed494bbee4a
 
 export default SignupScreen;
