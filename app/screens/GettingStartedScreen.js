@@ -60,7 +60,7 @@ export default class GettingStartedScreen extends Component {
         return (
             <ImageBackground source={require('../../assets/bg4.jpg')} style={styles.imagebg}>
                 <View style={styles.title} >
-                    <Text style={styles.WelcomeText} >Datos adicionales </Text>
+                    <Text style={styles.WelcomeText} > Datos adicionales </Text>
                 </View>
                 <View style={styles.descriptionContainer} >
                     <Text style={styles.descripcionTexto} >Ingrese los siguientes campos para completar su registro</Text>
@@ -69,36 +69,38 @@ export default class GettingStartedScreen extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Cedula'}
-                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'
                     />
                 </View>
-                <View style={styles.inputContainer}>
+                <TouchableOpacity>
+                    <View style={styles.button}>
                     <Picker
-                        style={styles.input}
-                        placeholderTextColor={'rgba(255,255,255,0.9)'}
+                        style={styles.picker}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'>
                         <Picker.Item label="Nacionalidad" value="" />
                         <Picker.Item label="Colombiano" value="Colombiano"/>
                         <Picker.Item label="Mexicano" value="Mexicano"/>
                         <Picker.Item label="Argentino" value="Argentino"/>
                     </Picker>
-                </View>
+                    </View>
+                </TouchableOpacity>
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.input}
                         placeholder={'Dirección'}
-                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'/>
                 </View>
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.input}
                         placeholder={'Peso'}
-                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        placeholderTextColor={'rgba(255,255,255,0.7)'}
                         underlineColorAndroid='transparent'/>
                 </View>
-                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressDone}>
+                <TouchableOpacity style={styles.btnG} onPress={this._onPressDone}>
                     <Text style={styles.text}> Guardar </Text>
                 </TouchableOpacity>
             </ImageBackground>

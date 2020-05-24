@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createAppContainer } from 'react-navigation';
+import {createAppContainer } from 'react-navigation';
 import Navigation from './Navigation';
 import Router from './Router';
 

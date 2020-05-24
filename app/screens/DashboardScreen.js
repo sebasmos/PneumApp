@@ -3,7 +3,12 @@ import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import { styles } from '../styles/styles';
-import { getData } from '../services/cloudant'
+import { getData } from '../services/cloudant';
+import Navigation from '../navigation/Navigation';
+
+//const _onPressRealTime = () => {
+  //  Navigation.navigate('RealTime', { someParam: 1 })
+//};
 
 export default class DashboardScreen extends Component {
     static navigationOptions = {
@@ -29,7 +34,7 @@ export default class DashboardScreen extends Component {
             ]
           };
     }
-
+   
     componentDidMount() {
         this.dataInterval = setInterval(() => getData()
             .then(data => this.setState({ data: data.docs || this.state.data }))
@@ -42,7 +47,13 @@ export default class DashboardScreen extends Component {
     }
 
     GetGridViewItem(item) {
+        if (item == 'Ver Señales'){
+           // onPress={_onPressRealTime}
+           Navigation.navigate('RealTime', { someParam: 1 })
+        }
+        else {
         Alert.alert(item);
+        }
     }
 
     render() {
