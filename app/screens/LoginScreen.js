@@ -36,7 +36,7 @@ export default class LoginScreen extends Component {
                 </View>
                 <View style={styles.logoContainer}>
                     <Image source={Logo} style={styles.Logo} ></Image>
-                    <Text style={styles.logoText}> Aplicacion de monitoreo para ventiladores mecanicos</Text>
+                    <Text style={styles.logoText}> Aplicacion de moasdasdsanitoreo para ventiladores mecanicos</Text>
                 </View>
 
                 <View style={styles.inputContainer}>

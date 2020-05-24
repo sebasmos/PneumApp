@@ -13,16 +13,16 @@ export const styles = StyleSheet.create({
     text: {
       fontSize: 16,
       justifyContent: 'center',
-      color: 'rgba(255, 255, 255, 0.8)',
+      color: '#001696',
       textAlign: 'center',
     },
     title: {
       fontSize: 30,
-      color: 'white',
+      color: '#001696',
       textAlign: 'center',
     },
     container: {
-      paddingTop: 40,
+      paddingTop: 100,
       alignItems: "center"
     },
     imagebg:{
