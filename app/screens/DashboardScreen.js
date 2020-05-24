@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import { styles } from '../styles/styles';
