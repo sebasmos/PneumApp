@@ -124,6 +124,9 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         marginTop: 5,
     },
+    ContainerHighlighted:{
+        marginTop:25
+    },
     Logo: {
         width: 330,
         height: 90,
