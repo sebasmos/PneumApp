@@ -1,5 +1,5 @@
 # IBM Platform for real-time monitoring
-# Justification
+# Project analysis
 As of 26 March 2020, the number of confirmed cases of patients with IDOC-19 was 462,648 worldwide. The stability of health systems in many countries has been affected by the increasing need for Intensive Care Units (ICUs), especially the availability of mechanical ventilation devices for the care of patients with the most severe symptoms of the disease.
 Due to the high rate of infection of the virus, the models developed for the estimation and projection of hospital resources show an imminent overcoming of the attention capacities of the health services in intensive care, which on average happens 30 days after the beginning of the epidemic, depending on the installed capacities of each country. Similarly, it is concluded that there is no timely diagnosis of those critical patients due to the lack of tools for remote monitoring.
 
@@ -48,7 +48,9 @@ Requirements:
 	
 ## Full Application
 Refer to this repository.
-'git clone https://github.com/sebasmos/PneumApp.git'
+`git clone https://github.com/sebasmos/PneumApp.git`
+Update dependencies with `npm install` and `npm upgrade`
+Mind that you must keep React navication with version 3.0.4. 
 
 ## Set-up 🤬
 
