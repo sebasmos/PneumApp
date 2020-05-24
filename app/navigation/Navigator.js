@@ -19,7 +19,7 @@ class Navigator extends Component {
     Navigation.setTopLevelNavigator(this.navigator);
     this.onAuthStateChanged = onAuthStateChanged(user => {
       if (user) {
-        Navigation.navigate('Dashboard', { user })
+        Navigation.navigate('GettingStarted', { user })
       }
     })
   }

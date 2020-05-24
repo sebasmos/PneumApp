@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, FlatList } from 'react-native';
+import { Text, View, Button, FlatList, Alert} from 'react-native';
 
 import { styles } from '../styles/styles';
 import { getData } from '../services/cloudant';
