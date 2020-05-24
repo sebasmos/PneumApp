@@ -37,8 +37,6 @@ const SignupScreen = () => {
     };
 
     const _onPressSignup = () => {
-        Navigation.navigate('GettingStarted', { someParam: 1 })
-
         signUpWithEmail(email, password)
             .then(user => {
                 alert(user)
