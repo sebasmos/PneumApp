@@ -27,6 +27,12 @@ export default class LoginScreen extends Component {
     _onPressLogin = () => {
         Navigation.navigate('Signup', { someParam: 1 })
     }
+    _onPressDashboard = () => {
+        Navigation.navigate('Dashboard', { someParam: 1 })
+    }
+    _onPressPass = () => {
+        Navigation.navigate('PasswordRetrieveScreen', { someParam: 1 })
+    }
 
     render() {
         return (
@@ -36,7 +42,7 @@ export default class LoginScreen extends Component {
                 </View>
                 <View style={styles.logoContainer}>
                     <Image source={Logo} style={styles.Logo} ></Image>
-                    <Text style={styles.logoText}> Aplicacion de moasdasdsanitoreo para ventiladores mecanicos</Text>
+                    <Text style={styles.logoText}> Aplicacion de monitoreo para ventiladores mecanicos</Text>
                 </View>
 
                 <View style={styles.inputContainer}>
@@ -68,10 +74,12 @@ export default class LoginScreen extends Component {
                         />
                     </TouchableOpacity>
                 </View>
-                <View >
-                    <Text style={styles.textforgot}>Olvidaste tu clave?</Text>
-                </View>
-                <TouchableOpacity style={styles.btnLogin}>
+
+                <TouchableOpacity onPress= {this._onPressPass} >
+                    <Text style={styles.textforgot} > ¿Olvidaste tu clave?</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressDashboard} >
                     <Text style={styles.text} > Entrar </Text>
                 </TouchableOpacity>
 

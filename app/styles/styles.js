@@ -35,14 +35,14 @@ export const styles = StyleSheet.create({
     text: {
       fontSize: 16,
       justifyContent: 'center',
-      color: '#001696',
+      color: 'rgba(255, 255, 255, 0.8)',
       textAlign: 'center',
     },
     title: {
       marginTop:48,
       marginBottom:16,
       fontSize: 30,
-      color: '#001696',
+      color: 'white',
       textAlign: 'center',
     },
     descriptionContainer:{
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
       textAlign: 'center',
     },
     container: {
-      paddingTop: 100,
+      paddingTop: 40,
       alignItems: "center"
     },
     imagebg:{

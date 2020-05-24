@@ -8,7 +8,8 @@ import {
     LoginScreen,
     DashboardScreen,
     GettingStarted,
-    SignupScreen
+    SignupScreen,
+    PasswordRetrieveScreen
 } from '../screens';
 
 const Router = createSwitchNavigator({
@@ -17,7 +18,7 @@ const Router = createSwitchNavigator({
             /* Dashboard */
             Dashboard: {
                 screen: DashboardScreen
-            },
+            },            
             GettingStarted: {
                 screen: GettingStarted,
                 navigationOptions: {
@@ -30,6 +31,7 @@ const Router = createSwitchNavigator({
                         }}></View>),
                 }
             }
+           
         }, {
             /* Custom Drawer config */
             initialRouteName: 'Dashboard',
@@ -54,9 +56,22 @@ const Router = createSwitchNavigator({
                             backgroundColor: '#EEE' //TODO: use global styles and colors
                         }}></View>),
                 }
-            },
+            },     
+
             Signup: {
                 screen: SignupScreen,
+                navigationOptions: {
+                    headerMode: 'none',
+                    header: (
+                        <View style={{
+                            width: '100%',
+                            height: StatusBar.currentHeight,
+                            backgroundColor: '#EEE' //TODO: use global styles and colors
+                        }}></View>),
+                }
+            },
+            PasswordRetrieveScreen: {
+                screen: PasswordRetrieveScreen,
                 navigationOptions: {
                     headerMode: 'none',
                     header: (

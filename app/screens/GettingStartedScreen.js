@@ -19,6 +19,7 @@ export default class GettingStartedScreen extends Component {
     _onPressDone = () => {
         Navigation.navigate('Dashboard', { someParam: 1 })
     }
+    
 
     _renderItem = ({ item }) => {
         return (

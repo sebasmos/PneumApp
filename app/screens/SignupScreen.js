@@ -28,6 +28,9 @@ export default class SignupScreen extends Component {
     _onPressSignup = () => {
         Navigation.navigate('GettingStarted', { someParam: 1 })
     }
+    _onPressPass = ()=> {
+        Navigation.goBack()
+    }
 
     render() {
         return (
@@ -84,8 +87,10 @@ export default class SignupScreen extends Component {
                     <Text style={styles.text} > Registrarme </Text>
                 </TouchableOpacity>
 
+                <TouchableOpacity style={styles.btnAtras} onPress={this._onPressPass}>
+                    <Text style={styles.text} > Atrás </Text>
+                </TouchableOpacity>
             </ImageBackground>
         );
     }
 }
-
