@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
-
+import { styles } from '../styles/styles';
 import { getData } from '../services/cloudant'
 
 export default class DashboardScreen extends Component {
@@ -15,9 +15,19 @@ export default class DashboardScreen extends Component {
 
         //const someExtractedParam = this.props.navigation.getParam('someParam', 'defaulValue')
 
-        this.state = {
+        /*this.state = {
             data: [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }],
-        };
+        };*/
+        this.state = {
+            GridListItems: [
+              { key: "Mi perfil" },
+              { key: "Ver Señales" },
+              { key: "Predicción COVID-19" },
+              { key: "Chatbot" },
+              { key: "Opcion 1" },
+              { key: "Opcion 2" },
+            ]
+          };
     }
 
     componentDidMount() {
@@ -31,52 +41,25 @@ export default class DashboardScreen extends Component {
         clearInterval(this.dataInterval);
     }
 
+    GetGridViewItem(item) {
+        Alert.alert(item);
+    }
+
     render() {
-        const data = this.state.data.map(item => item.value);//[50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
-        const contentInset = { top: 20, bottom: 20 }
+        //const data = this.state.data.map(item => item.value);//[50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80]
+        //const contentInset = { top: 20, bottom: 20 }
 
         return (
-            <View style={styles.container}>
-                <Text>Gotcha!</Text>
-                {/* <Text>{JSON.stringify(this.state.data)}</Text> */}
-                <View style={{ height: '60%', width: '100%', flexDirection: 'row' }}>
-                    <YAxis
-                        data={data}
-                        contentInset={contentInset}
-                        svg={{
-                            fill: 'grey',
-                            fontSize: 10,
-                        }}
-                        numberOfTicks={10}
-                        formatLabel={(value) => `${value} ppm`}
+            <View style={styles.containerPrincipal}>
+                <FlatList
+                    data={ this.state.GridListItems }
+                    renderItem={ ({item}) =>
+                        <View style={styles.GridViewContainer}>
+                        <Text style={styles.GridViewTextLayout} onPress={this.GetGridViewItem.bind(this, item.key)} > {item.key} </Text>
+                        </View> }
+                    numColumns={2}
                     />
-                    <LineChart
-                        style={{ width: '80%', marginLeft: 16 }}
-                        data={data}
-                        svg={{ stroke: 'rgb(134, 65, 244)', strokeWidth: 3 }}
-                        contentInset={contentInset}
-                        curve={shape.curveNatural}
-                    >
-                        <Grid />
-                    </LineChart>
-                    {/* <XAxis
-                        style={{ marginHorizontal: -10 }}
-                        data={data}
-                        formatLabel={(value, index) => index}
-                        contentInset={{ left: 10, right: 10 }}
-                        svg={{ fontSize: 10, fill: 'black' }}
-                    /> */}
-                </View>
             </View>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-})

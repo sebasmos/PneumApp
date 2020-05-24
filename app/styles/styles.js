@@ -57,6 +57,32 @@ export const styles = StyleSheet.create({
       paddingTop: 40,
       alignItems: "center"
     },
+    containerPrincipal: {
+      flex: 1,
+      justifyContent: "center",
+      backgroundColor: "#e5e5e5"
+    },
+    headerText: {
+      fontSize: 20,
+      textAlign: "center",
+      margin: 10,
+      fontWeight: "bold"
+    },
+    GridViewContainer: {
+      flex:1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 100,
+      margin: 5,
+      backgroundColor: '#7B1FA2'
+   },
+   GridViewTextLayout: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      justifyContent: 'center',
+      color: '#fff',
+      padding: 10,
+    },
     imagebg:{
       flex: 1,
       resizeMode: "cover",
