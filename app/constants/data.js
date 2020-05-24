@@ -1,8 +1,8 @@
 export const data = [
     {
         key:1,
-        title: 'Informacion del ventilador',
-        text: 'Welcome to CoronApp \n Click next to continue',
+        title: 'Información adicional',
+        text: 'Por favor, complete los siguientes datos para finalizar el registro de su perfil',
         options: [{
         type: 'Tipo de ventilador',
         selectors: ['Invasivo', 'No invasivo']
@@ -11,7 +11,6 @@ export const data = [
         selectors: ['None']
        }],
        inputs:[],
-        image: require('../../assets/LOGOFINAL.png'),
     },
     {
         key: 2,

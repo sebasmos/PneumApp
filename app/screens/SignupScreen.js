@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
     Text,
     View,
     ImageBackground,
     Image,
     TextInput,
     Dimensions,
+    Picker,
     TouchableOpacity
 } from 'react-native';
+import { styles } from '../styles/styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Navigation from '../navigation/Navigation'; 
@@ -42,7 +43,7 @@ export default class SignupScreen extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Nombres'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
                         underlineColorAndroid='transparent'
                     />
                 </View>
@@ -50,15 +51,7 @@ export default class SignupScreen extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Apellidos'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
-                        underlineColorAndroid='transparent'
-                    />
-                </View>
-                <View style={styles.inputContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder={'Cedula'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
                         underlineColorAndroid='transparent'
                     />
                 </View>
@@ -66,7 +59,7 @@ export default class SignupScreen extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Correo Electronico'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
                         underlineColorAndroid='transparent'
                     />
                 </View>
@@ -74,9 +67,18 @@ export default class SignupScreen extends Component {
                     <TextInput
                         style={styles.input}
                         placeholder={'Genero'}
-                        placeholderTextColor={'rgba(255,255,255,0.7)'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
                         underlineColorAndroid='transparent'
                     />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Picker
+                        style={styles.input}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        underlineColorAndroid='transparent'>
+                        <Picker.Item label="Soy un Paciente" value="Paciente" />
+                        <Picker.Item label="Soy un Medico" value="Medico" />
+                    </Picker>
                 </View>
                 <TouchableOpacity style={styles.btnLogin} onPress={this._onPressSignup}>
                     <Text style={styles.text} > Registrarme </Text>
@@ -87,103 +89,3 @@ export default class SignupScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    },
-    backgroundContainer: {
-        flex: 1,
-        width: null,
-        height: null,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    logoContainer: {
-        alignContent: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom:16
-    },
-    TextWelcome: {
-        alignContent: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: 16,
-        marginBottom: 32
-    },
-    WelcomeText: {
-        color: '#001696',
-        fontSize: 35,
-        textAlign: "center",
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        fontWeight: '500',
-        marginTop: 5,
-    },
-    Logo: {
-        width: 265,
-        height: 70,
-    },
-    logoText: {
-        color: '#001696',
-        fontSize: 25,
-        textAlign: "center",
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignContent: 'center',
-        fontWeight: '500',
-        marginTop: 10,
-    },
-    input: {
-        width: WIDTH - 55,
-        height: 45,
-        borderRadius: 45,
-        fontSize: 16,
-        paddingLeft: 45,
-        backgroundColor: 'rgba(0,0,0,0.35)',
-        color: 'rgba(255,255,255,0.7)',
-        marginHorizontal: 25,
-
-    },
-    inputIcon: {
-        position: 'absolute',
-        top: 8,
-        left: 37
-    },
-    inputContainer: {
-        marginTop: 8,
-        marginBottom: 8
-    },
-    btnEye: {
-        position: 'absolute',
-        top: 3,
-        right: 37
-    },
-    btnLogin: {
-        width: WIDTH - 55,
-        height: 45,
-        borderRadius: 45,
-        justifyContent: 'center',
-        backgroundColor: '#001696',
-        marginTop: 50
-    },
-    text: {
-        color: 'rgba(255,255,255,1)',
-        fontSize: 16,
-        textAlign: 'center'
-    },
-    textforgot: {
-        color: '#001696',
-        fontSize: 16,
-        textAlign: 'center',
-        textDecorationLine: 'underline'
-    },
-    textRegister: {
-        fontWeight: 'bold',
-        color: '#001696',
-        fontSize: 16,
-        textAlign: 'center',
-        textDecorationLine: 'underline'
-    }
-})

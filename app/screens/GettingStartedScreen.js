@@ -22,15 +22,12 @@ export default class GettingStartedScreen extends Component {
 
     _renderItem = ({ item }) => {
         return (
-            <View
-                style={styles.slide}>
+            <View style={styles.slide}>
                 <Text style={styles.title}>{item.title}</Text>
-                <Image source={item.image} style={styles.image} />
                 <Text style={styles.text}>{item.text}</Text>
 
                 <View style={{ backgroundColor: "#31372F", opacity: 0.7 }}>
                     {item.options.map(option =>
-
                         <View style={{ flex: 1, flexDirection: 'row', alignContent: 'stretch', margin: 20 }}>
                             <Text style={[styles.text], { width: 80, color: 'white' }}>{option.type}</Text>
                             <Picker
@@ -41,7 +38,6 @@ export default class GettingStartedScreen extends Component {
                             </Picker>
                         </View>
                     )}
-
                     {item.inputs.map(input =>
                         <View style={{ flex: 1, flexDirection: 'row', alignContent: 'stretch', margin: 10 }}>
                             <TextInput
@@ -62,14 +58,51 @@ export default class GettingStartedScreen extends Component {
     render() {
         return (
             <ImageBackground source={require('../../assets/bg4.jpg')} style={styles.imagebg}>
-                <AppIntroSlider
-                    keyExtractor={this._keyExtractor}
-                    renderItem={this._renderItem}
-                    data={data}
-                    onDone={this._onPressDone}
-                />
+                <View style={styles.title} >
+                    <Text style={styles.WelcomeText} >Datos adicionales </Text>
+                </View>
+                <View style={styles.descriptionContainer} >
+                    <Text style={styles.descripcionTexto} >Ingrese los siguientes campos para completar su registro</Text>
+                </View>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Cedula'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        underlineColorAndroid='transparent'
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Picker
+                        style={styles.input}
+                        placeholderTextColor={'rgba(255,255,255,0.9)'}
+                        underlineColorAndroid='transparent'>
+                        <Picker.Item label="Nacionalidad" value="" />
+                        <Picker.Item label="Colombiano" value="Colombiano"/>
+                        <Picker.Item label="Mexicano" value="Mexicano"/>
+                        <Picker.Item label="Argentino" value="Argentino"/>
+                    </Picker>
+                </View>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Dirección'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        underlineColorAndroid='transparent'/>
+                </View>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder={'Peso'}
+                        placeholderTextColor={'rgba(0,0,0,0.7)'}
+                        underlineColorAndroid='transparent'/>
+                </View>
+                <TouchableOpacity style={styles.btnLogin} onPress={this._onPressDone}>
+                    <Text style={styles.text}> Guardar </Text>
+                </TouchableOpacity>
             </ImageBackground>
         );
     }
+    
 }
 
