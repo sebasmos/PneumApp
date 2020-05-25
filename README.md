@@ -54,7 +54,7 @@ Refer to this repository.
 
 Update dependencies with `npm install` and `npm upgrade`.
 
-Mind that you must keep React navication with version 3.0.4. 
+Mind that you must keep React navigation with version 3.0.4. 
 
 ## Set-up 🤬
 
@@ -70,4 +70,4 @@ Change *.env* with the team credentials.
 ## Artificial ventilator - Bluetooth interface 
 Check our manual for further instructions regarding how to configure your artificial ventilator in our App.
 
-If you have any doubts or suggestions, please contact us in sebasmos@ieee.org
+If you have any doubts or suggestions, please let us in sebasmos@ieee.org
